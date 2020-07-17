@@ -1,38 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5e5;
+}
+
 .App {
-  text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+    height: 4rem;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header .title-box {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header .title-box i {
+    margin-left: 1rem;
+    font-size: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+header .title-box .title {
+    margin-left: 1rem;
+    font-size: 1.4rem;
+    position: relative;
+    top: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header nav {
+    position: absolute;
+    right: 0.6rem;
+}
+
+header nav .nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header nav .nav-list .nav-item {
+    font-size: 1.4rem;
+    margin-right: 1.6rem;
+}
+
+header nav .nav-list .nav-item:last-child {
+    margin-left: 1.6rem;
+}
+
+header nav .nav-list .nav-item:hover {
+    cursor: pointer;
+    user-select: none;
+}
+
+header nav .nav-list .nav-item i {
+    color: #fff;
+}
+
+.more {
+    margin-left: 0.4rem;
+    font-size: 0.6rem;
+    position: relative;
+    bottom: 4px;
+}
+
+main {
+    width: 100%;
+    height: auto;
+    padding-top: 4rem;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('./components/image/night.jpg');
+    width: 100%;
+    height: auto;
+
+    -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover; 
+     background-size: 100% 100%;
+
+     background-repeat: no-repeat;
+     background-position: center center; 
+}
+
+.home .welcome {
+    width: 100%;
+    height: 1000px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 3rem;;
+    text-align: center;
+    position: relative;
+    top: 8rem;
 }
