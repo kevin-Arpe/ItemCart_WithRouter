@@ -2,7 +2,17 @@ import React from 'react';
 
 const Cart = () => {
     return (
-        <div>장바구니 페이지</div>
+        <main>
+            <div className="cart">
+                <div className="title">장바구니</div>
+                <ul>
+                    <li>
+                        <span>토마토 : </span>
+                        <span>10개</span>
+                    </li>
+                </ul>
+            </div>
+        </main>
     );
 }
 

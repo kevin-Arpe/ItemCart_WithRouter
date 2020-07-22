@@ -4,8 +4,10 @@ const Header = ({ nav }) => {
     return (
         <header>
             <div className="title-box">
-                <i className="fab fa-accusoft"></i>
-                <div className="title">Journey's Online</div>
+                <a href="/">
+                    <i className="fab fa-accusoft"></i>
+                    <div className="title">Journey's Online</div>
+                </a>
             </div>
             { nav }
         </header>
