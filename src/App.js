@@ -18,7 +18,7 @@ class App extends Component {
         {id: 3, text: 'leaf', price: 0.6, num: 0, input: ''},
         {id: 4, text: 'lemon', price: 2.62, num: 0, input: ''}
       ]
-    })
+    });
   }
 
   handleChange = (e, id) => {
@@ -49,7 +49,9 @@ class App extends Component {
       input: ''
     }
 
-    this.setState({items: next_items});
+    this.setState({
+      items: next_items
+    });
   }
 
   render() {

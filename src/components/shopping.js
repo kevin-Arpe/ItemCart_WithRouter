@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ShoppingList from './makeList';
 import SelectedList from './selected_list';
+import SelectedSummary from './selected_summary';
 
 class Shopping extends Component {
     render() {
@@ -12,6 +13,7 @@ class Shopping extends Component {
         const selected = filtered.map( ({id, text, price, num}) => (
             <SelectedList key={id} text={text} price={price} num={num} />
         ));
+        const summary = <SelectedSummary items={items} />
 
         return (
             <main>
@@ -28,16 +30,7 @@ class Shopping extends Component {
                             <ul className="selected-list">
                                 { selected }
                             </ul>
-                            <div className="summary">
-                                <div>
-                                    <span>총 구매량 : </span>
-                                    <span>10 개</span>
-                                </div>
-                                <div>
-                                    <span>총 금액 : </span>
-                                    <span>101 $</span>
-                                </div>
-                            </div>
+                            { summary }
                         </div>
                     </div>
                 </div>
