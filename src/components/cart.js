@@ -6,14 +6,17 @@ const Cart = () => {
     const total_price = localStorage.getItem('total_price');
     const items = JSON.parse(localStorage.getItem('items'));
 
-    const list = items.map( (item) => {
-        return (
-            <ul className="cart-items">
-                <CartList item={item} />
-            </ul>
-            )
-        }
-    );
+    const list = ''
+    if (items !== null) {
+        list = items.map( (item) => {
+            return (
+                <ul className="cart-items">
+                    <CartList item={item} />
+                </ul>
+                )
+            }
+        );   
+    }
 
 
     console.log(total_num, total_price, items);
