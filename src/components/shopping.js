@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import ShoppingList from './makeList';
 import SelectedList from './selected_list';
 import SelectedSummary from './selected_summary';
+import Submit from './submit';
 
 class Shopping extends Component {
     render() {
-        const { items, onChange, onSubmit } = this.props;
+        const { total, items, onChange, onClick, onSubmit } = this.props;
         const list = items.map( ({id, text, price, num, input}) => (
-            <ShoppingList key={id} id={id} text={text} price={price} num={num} input={input} onChange={onChange} onSubmit={onSubmit} />
+            <ShoppingList key={id} id={id} text={text} price={price} num={num} input={input} onChange={onChange} onClick={onClick} />
         ));
         const filtered = items.filter((item) => item.num !== 0);
         const selected = filtered.map( ({id, text, price, num}) => (
             <SelectedList key={id} text={text} price={price} num={num} />
         ));
-        const summary = <SelectedSummary items={items} />
+
+        const summary = <SelectedSummary total={total} />
+        const submit = <Submit onSubmit={onSubmit} />
 
         return (
             <main>
@@ -33,6 +36,7 @@ class Shopping extends Component {
                             { summary }
                         </div>
                     </div>
+                    { submit }
                 </div>
             </main>
         );

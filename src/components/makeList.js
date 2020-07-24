@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShoppingList = ({ id, text, price, input, onChange, onSubmit }) => {
+const ShoppingList = ({ id, text, price, input, onChange, onClick }) => {
     let text2 = '';
 
     if (text === 'apple') {
@@ -20,7 +20,7 @@ const ShoppingList = ({ id, text, price, input, onChange, onSubmit }) => {
                     e.stopPropagation();
                     onChange(e, id);
                 }} placeholder="개수" />
-                <input type="submit" value="선택" name={text} onClick={(e) => onSubmit(e,id)} />
+                <input type="submit" value="선택" name={text} onClick={(e) => onClick(e,id)} />
             </form>
         </li>
     );

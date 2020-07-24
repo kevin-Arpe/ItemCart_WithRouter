@@ -12,6 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = ({
+      total: {num: 0, price: 0},
       items: [
         {id: 1, text: 'carrot', price: 2.3, num: 0, input: ''},
         {id: 2, text: 'apple', price: 1.2, num: 0, input: ''},
@@ -35,13 +36,14 @@ class App extends Component {
     this.setState({items: next_items});
   }
   
-  handleSubmit = (e,id) => {
+  handleClick = (e,id) => {
     e.preventDefault();
-    const { items } = this.state;
+    const { total, items } = this.state;
     const index = items.findIndex( (item) => item.id === id);
     const selected = items[index];
-    const input = selected.input;
+    const input = parseInt(selected.input);
     const next_items = [...items];
+    const next_total = {...total};
 
     next_items[index] = {
       ...selected,
@@ -49,14 +51,39 @@ class App extends Component {
       input: ''
     }
 
+    const total_num = parseInt(next_total.num) + input;
+    const total_price = (next_total.price + input*selected.price).toFixed(2);
+
     this.setState({
+      total: {num: total_num, price: parseFloat(total_price)},
+      items: next_items
+    });
+  }
+
+  handleSubmit = () => {
+    const { total, items } = this.state;
+    const filtered_items = items.filter( (item) => item.num !== 0);
+    
+    localStorage.setItem('total_num', total.num);
+    localStorage.setItem('total_price', total.price);
+    localStorage.setItem('items', JSON.stringify(filtered_items));
+
+    const next_items = [...items];
+    next_items.map( (item) => {
+      item.num = 0;
+
+      return item;
+    });
+
+    this.setState({
+      total: {num: 0, price: 0},
       items: next_items
     });
   }
 
   render() {
-    const { items } = this.state;
-    const { handleChange, handleSubmit } = this;
+    const { total, items } = this.state;
+    const { handleChange, handleClick, handleSubmit } = this;
 
     return (
       <div className="App">
@@ -65,7 +92,7 @@ class App extends Component {
           <Route exact path="/"><Home /></Route>
           <Route path="/cart"><Cart /></Route>
           <Route path="/contributes"><Contributors /></Route>
-          <Route path="/shopping"><Shopping items={items} onChange={handleChange} onSubmit={handleSubmit} /></Route>
+          <Route path="/shopping"><Shopping total={total} items={items} onChange={handleChange} onClick={handleClick} onSubmit={handleSubmit} /></Route>
         </Switch>
       </div>
     );
